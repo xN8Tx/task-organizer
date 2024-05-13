@@ -1,0 +1,2 @@
+ORIGIN_URL = https://your_domain.com // CORS origin url  
+PORT = 8888 // port to server

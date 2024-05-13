@@ -1,0 +1,14 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker-compose -f ./configs/docker/docker-compose.dev.yaml up --build",
+    "start": "docker-compose -f ./configs/docker/docker-compose.prod.yaml up --build",
+    "prod": "docker-compose -f ./configs/docker/docker-compose.prod.yaml up -b -d"
+  },
+  "keywords": [],
+  "author": "Evgeniy Shteyn <evgeniyshteyn@ya.ru> (https://shteyn-dev.ru)",
+  "license": "MIT"
+}
