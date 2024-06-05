@@ -1,10 +1,13 @@
+import type { Express } from 'express';
+import type { CorsOptions } from 'cors';
+
 import express, { json } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 
-import type { Express } from 'express';
-import type { CorsOptions } from 'cors';
+import logger from '@utils/logger';
+import generateRoutes from './api';
 
 dotenv.config();
 
@@ -21,11 +24,13 @@ const httpStart = () => {
   app.use(cookieParser());
   app.use(cors(corsConfig));
 
+  generateRoutes(app);
+
   app.listen(PORT, () => {
     try {
       console.log('Server listening on port: ' + PORT);
     } catch (error) {
-      console.log('Htpp server can not start', JSON.stringify(error));
+      logger.error('index.ts', JSON.stringify(error));
     }
   });
 };

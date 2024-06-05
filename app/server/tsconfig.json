@@ -8,8 +8,20 @@
     "esModuleInterop": true,
     "moduleResolution": "Node",
     "paths": {
-      "database": [
-        "./libs/database/dist/"
+      "@middleware/*": [
+        "./src/middleware/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@db/*": [
+        "./src/database/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
       ]
     }
   },
