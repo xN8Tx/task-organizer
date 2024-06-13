@@ -1,16 +1,14 @@
-import type { Controllers } from './index.d';
 import type { MyRequest } from '@models/next';
 import type { JwtPayload, PostUser } from '@models/request';
 import type { Request, Response } from 'express';
 
 import jwt from 'jsonwebtoken';
 
-import logger from '@utils/logger';
+import createJwtCookies from '@utils/create-jwt-cookies';
 import userDatabase from '@db/user';
+import logger from '@utils/logger';
 
-import createJwtCookies from './utils/create-jwt-cookies';
-
-const controllers: Controllers = {
+const controllers = {
   signin: async (req: Request, res: Response) => {
     try {
       const { email, password } = req.body;
@@ -30,10 +28,7 @@ const controllers: Controllers = {
 
       res.status(200).json({ message: 'Successfuly signin!' });
     } catch (error) {
-      logger.error(
-        'api/auth/controllers/index.ts -> signin',
-        JSON.stringify(error),
-      );
+      logger.error('api/auth/controllers/index.ts -> signin', error as string);
     }
   },
   registration: async (req: Request, res: Response) => {
@@ -57,7 +52,7 @@ const controllers: Controllers = {
     } catch (error) {
       logger.error(
         'api/auth/controllers/index.ts -> registration',
-        JSON.stringify(error),
+        error as string,
       );
     }
   },
@@ -71,10 +66,7 @@ const controllers: Controllers = {
 
       res.status(200).json({ message: userResponser[0] });
     } catch (error) {
-      logger.error(
-        'api/auth/controllers/index.ts -> getMe',
-        JSON.stringify(error),
-      );
+      logger.error('api/auth/controllers/index.ts -> getMe', error as string);
       res.status(500).json({ message: error });
     }
   },
@@ -98,10 +90,7 @@ const controllers: Controllers = {
         res.status(200).json({ message: 'Successfuly refresh token' });
       });
     } catch (error) {
-      logger.error(
-        'api/auth/controllers/index.ts -> refresh',
-        JSON.stringify(error),
-      );
+      logger.error('api/auth/controllers/index.ts -> refresh', error as string);
       res.status(500).json({ message: error });
     }
   },
@@ -112,10 +101,7 @@ const controllers: Controllers = {
 
       res.status(200).json({ message: 'Successfuly logout' });
     } catch (error) {
-      logger.error(
-        'api/auth/controllers/index.ts -> logout',
-        JSON.stringify(error),
-      );
+      logger.error('api/auth/controllers/index.ts -> logout', error as string);
       res.status(500).json({ message: error });
     }
   },

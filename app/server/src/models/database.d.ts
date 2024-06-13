@@ -26,3 +26,7 @@ export type List = {
   userId: number;
   name: string;
 };
+
+export type ListWithTask = Omit<List, 'userId'> & {
+  task: Omit<Task, 'listId' | 'userId'>;
+};
